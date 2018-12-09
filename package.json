@@ -6,6 +6,8 @@
     "start": "nodemon ./bin/www",
     "server": "node ./bin/www",
     "client": "npm run start --prefix client",
+    "install_client": "npm install --prefix client",
+    "install_server": "npm install",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
