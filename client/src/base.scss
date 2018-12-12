@@ -1,0 +1,39 @@
+$title-list-item-color : #1a1e25;
+$remind-background: #fbfcfd;
+$remind-primary: #0b5fd8;
+$remind-white: #ffffff;
+$remind-border: #8f97a3;
+$remind-text-confirm: #e71d40;
+$remind-confirm-del-yes: #e7ebf0;
+$remind-color-confirm-del-yes: #44566f;
+$remind-color-date-time-show: #798699;
+$inactive-button: #8f97a3;
+$gg_background_button: #de4d3b;
+
+
+$font-size-normal: 0.875rem;
+
+$border-normal: 0.375rem;
+
+.ButtonBase{
+    border-radius: $border-normal;
+    display: flex;
+    flex-direction: row;
+
+    >.ButtonBaseTitleColor{
+        color: $remind-white;
+        font-size: $font-size-normal;
+        font-weight: 600;
+    }
+
+    >.ButtonBaseTitleNoneColor{
+        color: $title-list-item-color;
+        font-size: $font-size-normal;
+        font-weight: 600;
+    }
+
+}
+
+.NoneBorder {
+    border: none;
+}

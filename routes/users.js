@@ -7,9 +7,6 @@ const isAuthenticated = require('../middleware/isAuthenticated');
 var router = express.Router();
 
 /* GET users listing. */
-// router.get('/', function(req, res) {
-//   res.send('respond with a resource');
-// });
 
 router.get('/current', isAuthenticated(), function (req, res) {
   return res.json({

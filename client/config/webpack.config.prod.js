@@ -379,7 +379,12 @@ module.exports = {
             loader: getStyleLoaders(
               {
                 importLoaders: 2,
+                modules: true,
+                localIdentName: '[name]___[local]__[hash:base64:5]',
                 sourceMap: shouldUseSourceMap,
+                includePaths: [
+                  path.resolve(__dirname, 'node_modules'),
+                ]
               },
               'sass-loader'
             ),
@@ -398,7 +403,7 @@ module.exports = {
                 importLoaders: 2,
                 sourceMap: shouldUseSourceMap,
                 modules: true,
-                getLocalIdent: getCSSModuleLocalIdent,
+                getLocalIdent: getCSSModuleLocalIdent
               },
               'sass-loader'
             ),

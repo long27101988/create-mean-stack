@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 
 //import component
 import Aux from '../Aux/Aux';
+import Footer from '../../components/Footer/Footer'
+// import Banner from '../../components/Banner/Banner'
+import Header from '../../components/Header/Header'
+
+import classes from './Layout.scss'
 
 
 
@@ -10,14 +15,14 @@ class Layout extends Component {
         return (
             <Aux>
                 {/* header */}
-                <header>this is header</header>
+                <Header />
                 {/* banner */}
-                <div>this is banner</div>
-                <main>
+                {/* <Banner /> */}
+                <main className={classes.Content}>
                     {this.props.children}
                 </main>
                 {/* footer */}
-                <footer>this is footer</footer>
+                <Footer/>
             </Aux>
         )
     }

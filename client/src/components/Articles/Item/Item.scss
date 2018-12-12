@@ -1,0 +1,16 @@
+.Item {
+    flex-basis: auto;
+    margin: auto;
+   
+}
+
+.HoverArticle{
+    &:hover{
+        box-shadow: 0 0 40px #ededed;
+    }
+}
+
+.TitleItem {
+    text-transform: capitalize;
+    font-size: 1.25rem !important;
+}

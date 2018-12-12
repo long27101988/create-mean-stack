@@ -5,6 +5,7 @@ var logger = require('morgan');
 // var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
 var passport = require('passport');
+var cors = require('cors');
 
 
 //database
@@ -36,6 +37,10 @@ require('./passport')
 app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}));
 
 //middleware route
 app.use('/api/users', usersRouter);

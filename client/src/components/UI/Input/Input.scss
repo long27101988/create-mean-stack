@@ -1,0 +1,56 @@
+@import '../../../base.scss';
+
+.Input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.Label {
+    font-weight: normal;
+    display: block;
+    margin-bottom: 8px;
+    font-size: $font-size-normal;
+    color: $remind-color-confirm-del-yes;
+}
+
+// inputModifyStyle
+
+.InputElement {
+    outline: none;
+    border: none;
+    background-color: white;
+    font: inherit;
+    padding: 6px 10px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: none;
+
+    &::placeholder {
+        font-size: 12px;
+        font-style: italic;
+    }
+
+    &:focus {
+        outline: none;
+        background-color: transparent;
+        border-color: none;
+        box-shadow: none;
+    }
+}
+
+.inputModifyStyle {
+    padding: 0.125rem 0.25rem;
+    border: solid 1px #e7ebf0;
+    border-radius: 6px;
+    &.is-danger {
+        border: solid 1px red;
+    }
+}
+
+
+.Invalid {
+    border: 1px solid red;
+    background-color: #FDA49A;
+}

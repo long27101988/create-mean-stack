@@ -1,0 +1,42 @@
+.ArticleDetail{
+    >.ArticleTitle{
+        background: url('../../assets/images/Photo-Editing-App.jpeg');
+        margin-bottom: 1.875rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        >div{
+            background: #000000;
+            opacity: 0.7;
+            min-height: 280px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        >h1 {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            font-size: 3rem;
+            color: #ffffff;
+            position: absolute;
+            text-align: center;
+            flex-direction: column;
+            justify-content: center;
+            text-transform: capitalize;
+        }
+    }
+
+    >.ArticleContent{
+        max-width: 960px;
+        margin: auto; 
+        text-align: justify;
+        >.GraphContent{
+            margin: 0 15px;
+        }
+    }
+}
