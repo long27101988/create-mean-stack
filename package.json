@@ -8,7 +8,6 @@
     "client": "npm run start --prefix client",
     "install_client": "npm install --prefix client",
     "install_server": "npm install",
-    "dev_install": "concurrently \"npm run install_client\" \"npm run install_server\"",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {

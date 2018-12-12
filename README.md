@@ -1,7 +1,10 @@
 
 
 Step 1: 
-### `npm run dev_install`
+### `npm run install_client`
 
-Step 2: 
+Step 2:
+### `npm run install_server`
+
+Step 3: 
 ### `npm run dev`
