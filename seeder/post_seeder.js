@@ -8,8 +8,6 @@ for (i = 0; i < 8; i++) {
     items[i].content = faker.lorem.paragraphs()
 }
 
-
-
 let data = [{
     'model': 'Article',
     'documents': items

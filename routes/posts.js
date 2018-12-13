@@ -1,7 +1,7 @@
 var express = require('express');
 var fs = require('fs');
 const isAuthenticated = require('../middleware/isAuthenticated');
-const dataPost = require('../data.json');
+// const dataPost = require('../data.json');
 var router = express.Router();
 
 /* GET users listing. */
