@@ -11,7 +11,9 @@ router.get('/', isAuthenticated(), function(req, res, next) {
     })
     .catch(error => {
         return res.status(400).json({
-            error: error.message,
+            error: {
+                messsage: error.message
+            } 
         })
     })
 });
@@ -24,7 +26,9 @@ router.get('/:id', isAuthenticated(), function (req, res, next) {
     })
     .catch(error => {
         return res.status(400).json({
-            error: error.message,
+            error: {
+                message: error.message
+            }
         })
     })
 });

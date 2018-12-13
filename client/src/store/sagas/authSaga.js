@@ -47,7 +47,7 @@ export function* loginSaga(action) {
         yield put(
             actions.authSuccess(token, response.data)
         );
-    } catch (error) {
+    } catch(error) {
         yield put(actions.authFailure(error.response.data.error));
     }
 }

@@ -25,7 +25,9 @@ router.post('/register', function(req, res) {
   var errors = req.validationErrors();
   if(errors) {
     return res.status(400).json({
-      error: errors[0].msg
+      error: {
+        message : errors[0].msg
+      }
     })
   }
 
@@ -49,7 +51,9 @@ router.post('/register', function(req, res) {
     }) 
     .catch(error => {
       return res.status(400).json({
-        error: error.message
+        error: {
+          message: error.message
+        }
       });
     }) ;
   })
@@ -64,14 +68,18 @@ router.post('/login', function (req, res, next) {
   const errors = req.validationErrors();
   if (errors) {
     return res.status(400).json({
-      error: errors[0].msg
+      error: {
+        message: errors[0].msg
+      }
     })
   }
 
   passport.authenticate('local', {session: false}, function(err, user, info) {
     if (err || !user) {
       return res.status(400).json({
-        error: 'This user does not exists',
+        error: {
+          message: 'This user does not exists'
+        }
       });
     }
 
