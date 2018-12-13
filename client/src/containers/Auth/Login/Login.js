@@ -57,6 +57,10 @@ class Login extends Component {
         formIsValid: false
     }
 
+    componentWillUnmount() {
+        this.props.resetError();
+    }
+
     inputChangedHandler = (event, controlName) => {
 
         let resultValidate = checkValidity(event.target.value, this.state.controls[controlName].validation)
@@ -159,7 +163,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        authHandler: (data) => dispatch(actions.authAction(data))
+        authHandler: (data) => dispatch(actions.authAction(data)),
+        resetError: () => dispatch(actions.resetError())
     }
 }
 

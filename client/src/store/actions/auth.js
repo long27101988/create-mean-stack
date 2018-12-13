@@ -69,6 +69,12 @@ export const checkAuthTimeout = expirationTime => {
     };
 }
 
+export const resetError = () => {
+    return {
+        type: actionTypes.RESET_ERROR,
+    }
+}
+
 
 export const logout = () => {
     return {

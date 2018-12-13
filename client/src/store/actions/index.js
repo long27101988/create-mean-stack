@@ -10,7 +10,8 @@ export {
     registerSuccess,
     registerFail,
     logout,
-    logoutSucceed
+    logoutSucceed,
+    resetError
 } from './auth'
 
 export {

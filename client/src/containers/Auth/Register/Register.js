@@ -73,6 +73,10 @@ class Register extends Component {
         formIsValid: false
     }
 
+    componentWillUnmount() {
+        this.props.resetError();
+    }
+
     inputChangedHandler = (e, inputIdentify) => {
         let resultValidate = checkValidity(e.target.value, this.state.controls[inputIdentify].validation);
         let updatedFormElement = updateObject(this.state.controls[inputIdentify], {
@@ -170,7 +174,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSignUpAccount: (data, history) => dispatch(actions.register(data, history))
+        onSignUpAccount: (data, history) => dispatch(actions.register(data, history)),
+        resetError: () => dispatch(actions.resetError())
     }
 }
 
