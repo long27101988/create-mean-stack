@@ -27,7 +27,6 @@ class Register extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true,
                     minLength: 2
                 },
                 valid: false,
@@ -45,7 +44,6 @@ class Register extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true,
                     email: true
                 },
                 valid: false,
@@ -63,7 +61,6 @@ class Register extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true,
                     minLength: 6
                 },
                 valid: false,
@@ -157,7 +154,6 @@ class Register extends Component {
         )
     }
 }
-
 
 const mapDispatchToProps = dispatch => {
     return {

@@ -28,7 +28,6 @@ class Login extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true,
                     email: true
                 },
                 valid: false,
@@ -46,7 +45,6 @@ class Login extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true,
                     minLength: 6
                 },
                 valid: false,

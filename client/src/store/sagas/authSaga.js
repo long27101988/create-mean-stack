@@ -37,7 +37,7 @@ export function* loginSaga(action) {
         const response = yield axios.post(url, authData);
         const token = response.data.token
         const expirationDate = yield new Date(
-            new Date().getTime() + 3600 * 1000
+            new Date().getTime() + (3600 * 24 * 1000)
         );
         yield localStorage.setItem("token", response.data.token);
         yield localStorage.setItem("expirationDate", expirationDate);
