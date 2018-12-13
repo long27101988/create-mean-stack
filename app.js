@@ -37,10 +37,7 @@ require('./passport')
 app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors({
-    origin: 'http://localhost:3000',
-    credentials: true
-}));
+app.use(cors());
 
 //middleware route
 app.use('/api/users', usersRouter);

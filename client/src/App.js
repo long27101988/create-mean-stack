@@ -14,18 +14,17 @@ const Logout = AsyncComponent(() => (import('./containers/Auth/Logout/Logout')))
 const Register = AsyncComponent(() => (import('./containers/Auth/Register/Register')))
 
 const PrivateRoute = ({component: C, ...rest}) => {
-  console.log(rest);
+  let token = localStorage.getItem('token')
   return (
     <Route {...rest} render={(props) => (
-        rest.isAuthenticated === true 
-        ? <C {...props} /> : <Redirect to="/login" />
+        token ? <C {...props} /> : <Redirect to="/login" />
     )} />
   )
-  }
+}
 
 class App extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.onTryAuto();
   }
   
@@ -33,22 +32,15 @@ class App extends Component {
 
     let routes = (
       <Switch>
-        <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
+        <Route path="/logout" component={Logout} />
+        <PrivateRoute path="/detail/:id" component={ArticleDetail} />
         <Route path="/" exact component={Home} />
+        <Redirect to="/" />
       </Switch>
     );
 
-    if ( this.props.isAuthenticated ) {
-      routes = (
-        <Switch>
-          <Route path="/detail/:id" component={ArticleDetail} />
-          <Route path="/logout" component={Logout} />
-          <Route path="/login" component={Login} />
-          <Route path="/" exact component={Home} />
-        </Switch>
-      );
-    }
     return (
       <div className={classes.App}>
         <Layout>
