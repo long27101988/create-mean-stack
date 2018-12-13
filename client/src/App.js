@@ -32,11 +32,11 @@ class App extends Component {
 
     let routes = (
       <Switch>
+        <Route path="/" exact component={Home} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         <Route path="/logout" component={Logout} />
         <PrivateRoute path="/detail/:id" component={ArticleDetail} />
-        <Route path="/" exact component={Home} />
         <Redirect to="/" />
       </Switch>
     );
