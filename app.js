@@ -18,6 +18,7 @@ mongoose.connect(config.dbConnectionString, {
 
 //setup model
 global.User = require('./models/user');
+global.Article = require('./models/article');
 
 
 // var indexRouter = require('./routes/index');

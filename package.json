@@ -8,6 +8,7 @@
     "client": "npm run start --prefix client",
     "install_client": "npm install --prefix client",
     "install_server": "npm install",
+    "seed_data": "node ./seeder/db_seeder",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
@@ -19,8 +20,10 @@
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "express-validator": "^5.3.0",
+    "faker": "^4.1.0",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.3.15",
+    "mongoose-seed": "^0.5.1",
     "morgan": "~1.9.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",

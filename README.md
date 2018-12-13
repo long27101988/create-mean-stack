@@ -9,5 +9,12 @@ Step 2:
 Step 3: 
 ### Find file `config.js` and modify database config `dbConnectionString`
 
-Step 4: 
+Step 4:
+### Seed data user and articles
+### `npm run seed_data`
+
+Step 5: 
 ### `npm run dev`
+
+Account to login:
+### admin@test.com/123456 
