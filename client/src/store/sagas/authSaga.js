@@ -19,8 +19,9 @@ export function* signUpSaga(action) {
             actions.registerSuccess()
         );
         yield action.history.push('/login')
-    }catch(error) {
-        yield put(actions.registerFail(error.response.data.error));
+
+    }catch(err) {
+        yield put(actions.registerFail(err.response.data.error));
     }
 }
 

@@ -117,10 +117,17 @@ class Register extends Component {
                 config: this.state.controls[key]
             })
         }
+
+        let errorMessage = null;
+        if(this.props.error) {
+            errorMessage = (
+                <p>{this.props.error.message}</p>
+            );
+        }
         
         return (
             <Aux>
-                <AuthTemplate authTitle="Sign Up">
+                <AuthTemplate authTitle="Sign Up" errorMessage={errorMessage}>
                     <form onSubmit={this.onSubmitSignUpForm}>
                         <div className={classes.inputForm}>
                             {
@@ -155,10 +162,16 @@ class Register extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        error: state.auth.error
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         onSignUpAccount: (data, history) => dispatch(actions.register(data, history))
     }
 }
 
-export default connect(null, mapDispatchToProps)(Register)
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

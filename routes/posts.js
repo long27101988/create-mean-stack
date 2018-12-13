@@ -1,7 +1,6 @@
 var express = require('express');
 var fs = require('fs');
 const isAuthenticated = require('../middleware/isAuthenticated');
-// const dataPost = require('../data.json');
 var router = express.Router();
 
 /* GET users listing. */
@@ -12,7 +11,7 @@ router.get('/', isAuthenticated(), function(req, res, next) {
     })
     .catch(error => {
         return res.status(400).json({
-            message: error.message,
+            error: error.message,
         })
     })
 });
@@ -25,7 +24,7 @@ router.get('/:id', isAuthenticated(), function (req, res, next) {
     })
     .catch(error => {
         return res.status(400).json({
-            message: error.message,
+            error: error.message,
         })
     })
 });

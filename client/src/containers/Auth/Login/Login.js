@@ -57,16 +57,15 @@ class Login extends Component {
         formIsValid: false
     }
 
-
     inputChangedHandler = (event, controlName) => {
 
         let resultValidate = checkValidity(event.target.value, this.state.controls[controlName].validation)
         const updatedControls = updateObject(this.state.controls, {
             [controlName]: updateObject(this.state.controls[controlName], {
                 value: event.target.value,
+                touched: true,
                 valid: resultValidate.valid,
                 errMsg: resultValidate.errMsg,
-                touched: true,
             })
         });
 
@@ -75,7 +74,8 @@ class Login extends Component {
             formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
         }
         this.setState({
-            controls: updatedControls
+            controls: updatedControls,
+            formIsValid: formIsValid
         });
     }
 
@@ -113,8 +113,7 @@ class Login extends Component {
         return (
             <div>
                 {authRedirect}
-                {errorMessage}
-                <AuthTemplate authTitle="Login">
+                <AuthTemplate authTitle="Login" errorMessage={errorMessage}>
                     <form onSubmit={this.onSubmitLoginForm}>
                         <div className={classes.inputForm}>
                             {

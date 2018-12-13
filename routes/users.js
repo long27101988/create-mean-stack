@@ -25,14 +25,14 @@ router.post('/register', function(req, res) {
   var errors = req.validationErrors();
   if(errors) {
     return res.status(400).json({
-      errors: errors
+      error: errors[0].msg
     })
   }
 
   User.findOne({email: req.body.email}).then(user => {
     if(user) {
       return res.status(400).json({
-        errors: {
+        error: {
           message: 'User is already'
         }
       })
@@ -49,7 +49,7 @@ router.post('/register', function(req, res) {
     }) 
     .catch(error => {
       return res.status(400).json({
-        error
+        error: error.message
       });
     }) ;
   })
@@ -64,7 +64,7 @@ router.post('/login', function (req, res, next) {
   const errors = req.validationErrors();
   if (errors) {
     return res.status(400).json({
-      errors: errors
+      error: errors[0].msg
     })
   }
 
