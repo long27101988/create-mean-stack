@@ -28,7 +28,8 @@ class Login extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: true,
+                    email: true
                 },
                 valid: false,
                 isShow: true,
@@ -45,7 +46,8 @@ class Login extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: true,
+                    minLength: 6
                 },
                 valid: false,
                 isShow: true,
@@ -53,19 +55,27 @@ class Login extends Component {
                 classModify: [bulma['input']],
                 errMsg: ""
             }
-        }
+        },
+        formIsValid: false
     }
 
 
     inputChangedHandler = (event, controlName) => {
+
+        let resultValidate = checkValidity(event.target.value, this.state.controls[controlName].validation)
         const updatedControls = updateObject(this.state.controls, {
             [controlName]: updateObject(this.state.controls[controlName], {
                 value: event.target.value,
-                valid: checkValidity(event.target.value, this.state.controls[controlName].validation),
-                errMsg: !checkValidity(event.target.value, this.state.controls[controlName].validation) ? "This field is not empty!" : "",
+                valid: resultValidate.valid,
+                errMsg: resultValidate.errMsg,
                 touched: true,
             })
         });
+
+        let formIsValid = true;
+        for (let inputIdentifier in updatedControls) {
+            formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
+        }
         this.setState({
             controls: updatedControls
         });
@@ -130,7 +140,7 @@ class Login extends Component {
                             }
                         </div>
                         <div>
-                            <Button classesButton={[classes.ButtonBase, bulma['is-primary']]}>
+                            <Button disabled={!this.state.formIsValid} classesButton={[classes.ButtonBase, bulma['is-primary']]}>
                                 <span className={classes.ButtonBaseTitle}>Login</span>
                             </Button>
                         </div>

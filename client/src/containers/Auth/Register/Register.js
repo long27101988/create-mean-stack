@@ -27,7 +27,8 @@ class Register extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: true,
+                    minLength: 2
                 },
                 valid: false,
                 isShow: true,
@@ -44,7 +45,8 @@ class Register extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: true,
+                    email: true
                 },
                 valid: false,
                 isShow: true,
@@ -61,7 +63,8 @@ class Register extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: true,
+                    minLength: 6
                 },
                 valid: false,
                 isShow: true,
@@ -69,24 +72,32 @@ class Register extends Component {
                 classModify: [bulma['input']],
                 errMsg: ""
             }
-        }
+        },
+        formIsValid: false
     }
 
     inputChangedHandler = (e, inputIdentify) => {
-         let updatedFormElement = updateObject(this.state.controls[inputIdentify], {
-             value: e.target.value,
-             touched: true,
-             valid: checkValidity(e.target.value, this.state.controls[inputIdentify].validation),
-             errMsg: !checkValidity(e.target.value, this.state.controls[inputIdentify].validation) ? "This field is not empty!" : "",
-         });
+        let resultValidate = checkValidity(e.target.value, this.state.controls[inputIdentify].validation);
+        let updatedFormElement = updateObject(this.state.controls[inputIdentify], {
+            value: e.target.value,
+            touched: true,
+            valid: resultValidate.valid,
+            errMsg: resultValidate.errMsg
+        });
 
-         let updatedListElem = updateObject(this.state.controls, {
-             [inputIdentify]: updatedFormElement
-         });
+        let updatedListElem = updateObject(this.state.controls, {
+            [inputIdentify]: updatedFormElement
+        });
 
-         this.setState({
-             controls: updatedListElem
-         });
+        let formIsValid = true;
+        for (let inputIdentifier in updatedListElem) {
+            formIsValid = updatedListElem[inputIdentifier].valid && formIsValid;
+        }
+
+        this.setState({
+            controls: updatedListElem,
+            formIsValid: formIsValid
+        });
     }
 
     onSubmitSignUpForm = (e) => {
@@ -127,6 +138,7 @@ class Register extends Component {
                                         touched={elem.config.touched}
                                         label={elem.config.label}
                                         classModify={elem.config.classModify}
+                                        errMsg={elem.config.errMsg}
                                         style={elem.config.style ?  elem.config.style : null}
                                         format={elem.config.format ? elem.config.format : null}
                                         changed={(event) => this.inputChangedHandler(event, elem.id)}
@@ -135,7 +147,7 @@ class Register extends Component {
                             }
                         </div>
                         <div className={classes.FooterLoginForm}>
-                            <Button classesButton={[classes.ButtonBase, classes.NoneBorder, bulma['is-primary']]}>
+                            <Button disabled={!this.state.formIsValid} classesButton={[classes.ButtonBase, classes.NoneBorder, bulma['is-primary']]}>
                                 <span className={classes.titleAuthButton}>Sign Up</span>
                             </Button>
                         </div>

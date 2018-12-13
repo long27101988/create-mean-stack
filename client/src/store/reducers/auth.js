@@ -18,7 +18,6 @@ const registerStart = (state, action) => {
 }
 
 const registerSuccess = (state, action) => {
-    console.log("inhrere");
     return updateObject(state, {
         loading: false,
         error: null,
